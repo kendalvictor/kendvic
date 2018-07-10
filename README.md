@@ -1,0 +1,2 @@
+# kendvic
+Proyecto personal
