@@ -15,7 +15,7 @@ SECRET_KEY = 'c(r$jn^otpxn&^y*6y8fgm1g45rm!u$kvgh9%7kt+)8=oub17u'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-SITE_URL = 'https://kendvic.com/'
+SITE_URL = 'https://kendtor.live/'
 
 DATE_INPUT_FORMATS = ['%d/%m/%Y']
 
