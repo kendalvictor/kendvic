@@ -36,7 +36,11 @@ class LawsAdmin(admin.ModelAdmin):
                     'article', 'chapter', 'title_legis')
     search_fields = ('tittle',)
     list_editable = ('tittle', 'status')
-    list_filter = ('article', 'chapter', 'title_legis')
+    list_filter = (
+        ('article', admin.RelatedOnlyFieldListFilter),
+        ('chapter', admin.RelatedOnlyFieldListFilter),
+        ('title_legis', admin.RelatedOnlyFieldListFilter),
+    )
     readonly_fields = ('chapter', 'title_legis')
 
     fieldsets = (
