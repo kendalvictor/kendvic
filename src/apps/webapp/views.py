@@ -1,10 +1,12 @@
-
 from .forms import LawHomeForm, TwiterForm
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView
+from django.contrib.auth import authenticate, login, logout
+from django.views.generic import FormView, RedirectView
+
+from . import forms
 
 import csv
 import re
-import sys
 
 import tweepy
 from textblob import TextBlob
@@ -21,10 +23,6 @@ class RegisterView(TemplateView):
 
 class ProfileView(TemplateView):
     template_name = 'profile.html'
-
-
-class LoginView(TemplateView):
-    template_name = 'login.html'
 
 
 class LeyListView(TemplateView):
@@ -127,13 +125,6 @@ class AnalisisTwiterView(TemplateView):
             context["public_tweets"] = self.public_tweets
             context["total"] = self.total
         return context
-
-
-from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import redirect
-from django.views.generic import FormView, RedirectView
-
-from . import forms
 
 
 class LoginView(FormView):
