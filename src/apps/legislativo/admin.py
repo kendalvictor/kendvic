@@ -1,7 +1,34 @@
 from django.contrib import admin
 from import_export.admin import ExportMixin
 
-from .models import Status, Tittle, Chapter, Article, Laws
+from .models import Status, Tittle, Chapter, Article, Laws, Questions, Answer
+
+
+@admin.register(Questions)
+class QuestionsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'text', 'user', 'law', 'approved', 'displeases',
+                    'comments')
+    list_filter = (
+        ('user', admin.RelatedOnlyFieldListFilter),
+        ('law', admin.RelatedOnlyFieldListFilter)
+    )
+    readonly_fields = ('id', 'text', 'user', 'law', 'approved', 'displeases',
+                       'comments')
+    search_fields = ('text', )
+
+
+@admin.register(Answer)
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'text', 'user', 'law', 'approved', 'displeases',
+                    'like')
+    list_filter = (
+        ('user', admin.RelatedOnlyFieldListFilter),
+        ('law', admin.RelatedOnlyFieldListFilter),
+        ('question', admin.RelatedOnlyFieldListFilter)
+    )
+    readonly_fields = ('id', 'text', 'user', 'law', 'approved', 'displeases',
+                       'like')
+    search_fields = ('text', )
 
 
 @admin.register(Status)

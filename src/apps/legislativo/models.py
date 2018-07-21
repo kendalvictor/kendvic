@@ -141,6 +141,9 @@ class Laws(TimeStampedModel):
     like = models.IntegerField(
         default=0
     )
+    comments = models.IntegerField(
+        default=0
+    )
 
     def __str__(self):
         return self.tittle
@@ -177,6 +180,9 @@ class Questions(TimeStampedModel):
         default=0
     )
     like = models.IntegerField(
+        default=0
+    )
+    comments = models.IntegerField(
         default=0
     )
 
