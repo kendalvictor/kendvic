@@ -83,14 +83,16 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(Laws)
 class LawsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'tittle', 'status', 'url_spanish', 'url_quechua',
+    list_display = ('code', 'tittle', 'status', 'comision', 'published',
+                    'url_spanish', 'url_quechua',
                     'article', 'chapter', 'title_legis')
-    search_fields = ('tittle',)
-    list_editable = ('tittle', 'status')
+    search_fields = ('tittle', 'code')
+    list_editable = ('published', 'tittle', 'status', 'comision')
     list_filter = (
         ('article', admin.RelatedOnlyFieldListFilter),
         ('chapter', admin.RelatedOnlyFieldListFilter),
         ('title_legis', admin.RelatedOnlyFieldListFilter),
+        ('comision', admin.RelatedOnlyFieldListFilter),
     )
     readonly_fields = ('chapter', 'title_legis')
 

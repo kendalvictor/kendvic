@@ -11,6 +11,21 @@ from ..core.models import TimeStampedModel, User
 from ..core.utils import (upload_element_image, upload_additional_image)
 
 
+class Comision(TimeStampedModel):
+    name = models.CharField(
+        "NOmbre",
+        max_length=250,
+        db_index=True
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = u"Comision"
+        verbose_name_plural = u"Comision"
+
+
 class Status(TimeStampedModel):
     name = models.CharField(
         "NOmbre",
@@ -88,10 +103,20 @@ class Article(TimeStampedModel):
 
 
 class Laws(TimeStampedModel):
+    code = models.CharField(
+        "Codigo/Numero",
+        max_length=250,
+        db_index=True
+    )
     tittle = models.CharField(
         "Titulo de la ley",
         max_length=250,
         db_index=True
+    )
+    published = models.DateField(
+        'Fecha de PUblicacion',
+        null=True,
+        blank=True
     )
     url_spanish = models.URLField(
         "Url pdf español",
@@ -109,6 +134,14 @@ class Laws(TimeStampedModel):
         blank=True,
         db_index=True,
         verbose_name='Estado',
+        on_delete=models.SET_NULL,
+    )
+    comision = models.ForeignKey(
+        Comision,
+        null=True,
+        blank=True,
+        db_index=True,
+        verbose_name='Comision',
         on_delete=models.SET_NULL,
     )
     article = models.ForeignKey(
