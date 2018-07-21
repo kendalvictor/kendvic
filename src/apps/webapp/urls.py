@@ -7,11 +7,12 @@ urlpatterns = [
         views.HomeView.as_view(),
         name='home'),
     url(r'^register/$',
-            views.RegisterView.as_view(),
-            name='register'),
+        views.RegisterView.as_view(),
+        name='register'),
+
     url(r'^login/$',
-            views.LoginView.as_view(),
-            name='admission'),
+        views.LoginView.as_view(),
+        name='admission'),
 
     url(r'^profile/$',
         views.ProfileView.as_view(),
@@ -25,9 +26,10 @@ urlpatterns = [
         views.LeyListPostView.as_view(),
         name='ley-list-post'),
 
-     url(r'^analisis-twiter/$',
+    url(r'^analisis-twiter/$',
         views.AnalisisTwiterView.as_view(),
         name='ley-list-post'),
+
     url(
         r'^law-autocomplete/$',
         LawsAutocomplete.as_view(),
