@@ -199,11 +199,6 @@
                             </div>
                             {% endblock content_search %}
 
-                            {% block content_body %}
-                            {% endblock content_body %}
-
-                        </div>
-                        {% endblock content_search %}
                         {% block content_body %}
                         {% endblock content_body %}
                     </div>
@@ -340,7 +335,7 @@
         "ajax": '{% url 'laws' %}',
         "bProcessing": true,
         "ordering": true,
-        "pageLength": 50,g
+        "pageLength": 50,
         "language": language_datatable
     });
 
