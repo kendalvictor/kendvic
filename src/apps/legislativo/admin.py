@@ -1,7 +1,7 @@
 from django.contrib import admin
 from import_export.admin import ExportMixin
 
-from .models import Status, Tittle, Chapter, Article, Laws, Questions, Answer
+from .models import Status, Tittle, Chapter, Article, Laws, Questions, Answer, Comision
 
 
 @admin.register(Questions)
@@ -57,6 +57,12 @@ class AnswerAdmin(admin.ModelAdmin):
 
 @admin.register(Status)
 class StatusAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name',)
+    list_editable = ('name', )
+
+
+@admin.register(Comision)
+class ComisionAdmin(admin.ModelAdmin):
     list_display = ('id', 'name',)
     list_editable = ('name', )
 
