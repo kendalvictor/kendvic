@@ -1,10 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>PROFILE</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+
+{% block content_search %}
+    <div class="header">
+        <h4 class="title">Perfil Usuario</h4>
+    </div>
+{% endblock content_search %}
+
+{% block content_body %}
+
+    <div class="content">
+        <form>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>correo</label>
+                        <input type="text" class="form-control" placeholder="Ingrese Email" value="">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>dni</label>
+                        <input type="text" class="form-control" placeholder="Ingrese Dni" value="">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>password</label>
+                        <input type="password" class="form-control" placeholder="contraseña" value="">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Departamento</label>
+                        <select class="form-control">
+                            <option>--seleccione--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Provincia</label>
+                        <select class="form-control">
+                            <option>--seleccione--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Distrito</label>
+                        <select class="form-control">
+                            <option>--seleccione--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Abogado</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">No Abogado</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label># colegiatura</label>
+                        <input type="text" class="form-control" placeholder="Ingrese Colegiatura" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>Categorias de ley</label>
+                        <ul class="list-group">
+                            <li class="list-group-item">Categoria 1</li>
+                             <li class="list-group-item">Categoria 2</li>
+                             <li class="list-group-item">Categoria 3</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+
+{% endblock content_body %}
