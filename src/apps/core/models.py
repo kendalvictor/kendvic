@@ -113,6 +113,31 @@ class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
         default=False
     )
 
+
+    # fecha_nacimiento = models.DateField(
+    #     null=True, blank=True)
+    #
+    # genero = models.CharField(
+    #     max_length=2, choices=SEXO_CHOICES,
+    #     default='', null=True, blank=True)
+    #
+    # continente = models.ForeignKey(
+    #     UbigeoContinente,
+    #     related_name='%(app_label)s_%(class)s_continente')
+    # pais = models.ForeignKey(
+    #     UbigeoPais,
+    #     related_name='%(app_label)s_%(class)s_pais')
+    # departamento = models.ForeignKey(
+    #     UbigeoDepartamento,
+    #     related_name='%(app_label)s_%(class)s_departamento')
+    # provincia = models.ForeignKey(
+    #     UbigeoProvincia,
+    #     related_name='%(app_label)s_%(class)s_provincia')
+    # distrito = models.ForeignKey(
+    #     UbigeoDepartamento,
+    #     related_name='%(app_label)s_%(class)s_distrito')
+
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
