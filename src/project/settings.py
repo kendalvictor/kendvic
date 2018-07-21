@@ -202,6 +202,17 @@ GOOGLE_RECAPTCHA_SECRET_KEY = '6LcWeVYUAAAAAKFIrmCdNHJXMRL6Mx9BkJDEuAgr'
 THUMBNAIL_D = {'size': (360, 180), 'crop': True}
 THUMBNAIL_C = {'size': (200, 200), 'crop': True}
 
+##################
+# LOCAL SETTINGS #
+##################
+
+# Allow any settings to be defined in local.py which should be
+# ignored in your version control system allowing for settings to be
+# defined per machine.
+try:
+    from .local_settings import *
+except ImportError:
+    pass
 
 # ChatterBot settings
 
@@ -215,19 +226,22 @@ CHATTERBOT = {
 }
 
 ##################
-# LOCAL SETTINGS #
-##################
-
-# Allow any settings to be defined in local.py which should be
-# ignored in your version control system allowing for settings to be
-# defined per machine.
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-
-##################
 # DEBUG SETTINGS #
 ##################
 
 INTERNAL_IPS = ('127.0.0.1',)
+if DEBUG:
+    try:
+        import debug_toolbar
+    except ImportError:
+        pass
+    else:
+        INSTALLED_APPS += ('debug_toolbar',)
+        MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+
+    try:
+        import django_extensions
+    except ImportError:
+        pass
+    else:
+        INSTALLED_APPS += ('django_extensions',)
