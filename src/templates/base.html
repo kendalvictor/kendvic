@@ -32,30 +32,37 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="{% static "assets/css/pe-icon-7-stroke.css" %}" rel="stylesheet"/>
     <style>
-      .dataTable thead{
-          display: table-header-group !important;
-      }
-       .dataTable tfoot {
+        .dataTable thead {
             display: table-header-group !important;
         }
+
+        .dataTable tfoot {
+            display: table-header-group !important;
+        }
+
         .dataTable tfoot th {
             border-top: 1px solid transparent;
             border-bottom: 1px solid #111;
             padding: 4px
         }
-         .dataTables_filter{
+
+        .dataTables_filter {
             display: none;
         }
+
         .dataTables_scroll {
             display: flex;
             flex-direction: column;
         }
+
         .dataTables_scroll .dataTables_scrollHead {
             order: 1;
         }
+
         .dataTables_scroll .dataTables_scrollBody {
             order: 3;
         }
+
         .dataTables_scroll .dataTables_scrollFoot {
             order: 2;
         }
@@ -152,45 +159,47 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                        <div class="card">
-                            {% block content_search %}
-                                <div class="card-header">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-4">
+                    <div class="card">
+                        {% block content_search %}
+                            <div class="card-header">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4">
 
-                                                <div class="form-group">
-                                                    <input type="search"
-                                                           class="form-control" placeholder="Busqueda ley" value="" id="search_law">
-                                                    {{ form.tittle }}
-                                                </div>
+                                            <div class="form-group">
+                                                <input type="search"
+                                                       class="form-control" placeholder="Busqueda ley" value=""
+                                                       id="search_law">
+                                                {{ form.tittle }}
                                             </div>
-                                            <div class="col-md-4"></div>
                                         </div>
-                                    </form>
-                                </div>
-                            {% endblock content_search %}
-                            <div id="leyes">
-                                <table class="datatable" id="datatable_ley">
-                                    <thead>
-                                      <tr>
-                                          <th width="7%">----------</th>
-                                      </tr>
-                                    </thead>
-                                    <tfoot>
-                                      <tr>
-                                          <th><input type="text" name="tittle"></th>
-                                      </tr>
-                                    </tfoot>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
+                                        <div class="col-md-4"></div>
+                                    </div>
+                                </form>
                             </div>
-                            {% block content_body %}
-                            {% endblock content_body %}
+
+                        <div id="leyes">
+                            <table class="datatable" id="datatable_ley">
+                                <thead>
+                                <tr>
+                                    <th width="7%">----------</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th><input type="text" name="tittle"></th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+
+                                </tbody>
+                            </table>
                         </div>
+                        {% endblock content_search %}
+                        {% block content_body %}
+                        {% endblock content_body %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -205,6 +214,21 @@
                     <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
                 </p>
             </div>
+            <script type="text/javascript">
+                var headID = document.getElementsByTagName("head")[0];
+                var newCss = document.createElement('link');
+                newCss.rel = 'stylesheet';
+                newCss.type = 'text/css';
+                window._botUsername = '713756';
+                window._botName = 'jonathan';
+                newCss.href = "https://rebot.me/assets/css/bot.css";
+                var newScript = document.createElement('script');
+                newScript.src = "https://rebot.me/assets/js/bot.js";
+                newScript.type = 'text/javascript';
+                headID.appendChild(newScript);
+                headID.appendChild(newCss);
+            </script>
+
         </footer>
 
     </div>
@@ -219,31 +243,31 @@
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script>
-    $( "#id_tittle" ).autocomplete({
-      source: function( request, response ) {
-        $.ajax({
-          url: "/law-autocomplete/",
-          dataType: "jsonp",
-          data: {
-            q: request.term
-          },
-          success: function( data ) {
-            response( data );
-          }
-        });
-      },
-      minLength: 3,
-      select: function( event, ui ) {
-        log( ui.item ?
-          "Selected: " + ui.item.label :
-          "Nothing selected, input was " + this.value);
-      },
-      open: function() {
-        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-      },
-      close: function() {
-        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-      }
+    $("#id_tittle").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: "/law-autocomplete/",
+                dataType: "jsonp",
+                data: {
+                    q: request.term
+                },
+                success: function (data) {
+                    response(data);
+                }
+            });
+        },
+        minLength: 3,
+        select: function (event, ui) {
+            log(ui.item ?
+                "Selected: " + ui.item.label :
+                "Nothing selected, input was " + this.value);
+        },
+        open: function () {
+            $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+        },
+        close: function () {
+            $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+        }
     });
 </script>
 <!--  Charts Plugin -->
@@ -280,51 +304,51 @@
 <script src="{% static "assets/js/vendor/datatable.js" %}"></script>
 <script>
     var language_datatable = {
-        "sProcessing":     "Procesando...",
-        "sLengthMenu":     "Mostrar _MENU_ registros",
-        "sZeroRecords":    "No se encontraron resultados",
-        "sEmptyTable":     "Ningún dato disponible en esta tabla",
-        "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-        "sInfoPostFix":    "",
-        "sSearch":         "Buscar:",
-        "sUrl":            "",
-        "sInfoThousands":  ",",
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "Ningún dato disponible en esta tabla",
+        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": ",",
         "sLoadingRecords": "Cargando...",
         "oPaginate": {
-            "sFirst":    "Primero",
-            "sLast":     "Último",
-            "sNext":     "Siguiente",
+            "sFirst": "Primero",
+            "sLast": "Último",
+            "sNext": "Siguiente",
             "sPrevious": "Anterior"
         },
         "oAria": {
-            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
             "sSortDescending": ": Activar para ordenar la columna de manera descendente"
         }
     };
 
     var table_ley = $("#datatable_ley").DataTable({
         "iCookieDuration": 60,
-      "iDisplayLength": -1,
-      "bStateSave": false,
-      "bAutoWidth": false,
-      "bRetrieve": true,
-      "bJQueryUI": true,
-      "bScrollAutoCss": true,
-      "bProcessing": true,
-      "bPaginate": false,
-      "ordering": true,
-      "language": language_datatable
+        "iDisplayLength": -1,
+        "bStateSave": false,
+        "bAutoWidth": false,
+        "bRetrieve": true,
+        "bJQueryUI": true,
+        "bScrollAutoCss": true,
+        "bProcessing": true,
+        "bPaginate": false,
+        "ordering": true,
+        "language": language_datatable
     });
 
-    table_ley.columns().every( function () {
+    table_ley.columns().every(function () {
         var that = this;
 
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            if ( that.search() !== this.value ) {
+        $('input', this.footer()).on('keyup change', function () {
+            if (that.search() !== this.value) {
                 that
-                    .search( this.value )
+                    .search(this.value)
                     .draw();
             }
         });
