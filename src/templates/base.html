@@ -59,6 +59,9 @@
         .dataTables_scroll .dataTables_scrollFoot {
             order: 2;
         }
+        th input {
+            width: 100%;
+        }
     </style>
     {% block style %}
     {% endblock style %}
@@ -122,7 +125,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href=""></a>
                 </div>
                 <div class="collapse navbar-collapse">
 
@@ -154,32 +157,30 @@
                 <div class="row">
                         <div class="card">
                             {% block content_search %}
-                                <div class="card-header">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-md-4"></div>
-                                            <div class="col-md-4">
-
-                                                <div class="form-group">
-                                                    <input type="search"
-                                                           class="form-control" placeholder="Busqueda ley" value="" id="search_law">
-                                                    {{ form.tittle }}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4"></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            {% endblock content_search %}
                             <div id="leyes">
+                                <center><h5 style="color:slateblue"
+                                            class="v-link">BUSQUEDA
+                                PERSONALIZADA</h5></center>
                                 <table class="datatable" id="datatable_ley">
                                     <thead>
                                       <tr>
-                                          <th width="7%">----------</th>
+                                          <th width="15%">Codigo / Numero</th>
+                                          <th width="15%">Ley</th>
+                                          <th width="15%">Estado</th>
+                                          <th width="15%">Comision</th>
+                                          <th width="15%">Fecha pub.</th>
+                                          <th width="10%">Me gusta</th>
+                                          <th width="15%">Comentarios</th>
                                       </tr>
                                     </thead>
                                     <tfoot>
                                       <tr>
+                                          <th><input type="text" name="tittle"></th>
+                                          <th><input type="text" name="tittle"></th>
+                                          <th><input type="text" name="tittle"></th>
+                                          <th><input type="text" name="tittle"></th>
+                                          <th><input type="text" name="tittle"></th>
+                                          <th><input type="text" name="tittle"></th>
                                           <th><input type="text" name="tittle"></th>
                                       </tr>
                                     </tfoot>
@@ -188,6 +189,8 @@
                                     </tbody>
                                 </table>
                             </div>
+                            {% endblock content_search %}
+
                             {% block content_body %}
                             {% endblock content_body %}
                         </div>
@@ -302,17 +305,11 @@
     };
 
     var table_ley = $("#datatable_ley").DataTable({
-        "iCookieDuration": 60,
-      "iDisplayLength": -1,
-      "bStateSave": false,
-      "bAutoWidth": false,
-      "bRetrieve": true,
-      "bJQueryUI": true,
-      "bScrollAutoCss": true,
-      "bProcessing": true,
-      "bPaginate": false,
-      "ordering": true,
-      "language": language_datatable
+        "ajax": '{% url 'laws' %}',
+        "bProcessing": true,
+        "ordering": true,
+        "pageLength": 50,
+        "language": language_datatable
     });
 
     table_ley.columns().every( function () {
