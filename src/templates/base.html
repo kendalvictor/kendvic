@@ -95,12 +95,15 @@
                         <p>Inicio</p>
                     </a>
                 </li>
+                {% if user.is_authenticated %}
                 <li>
                     <a href="/profile">
                         <i class="pe-7s-user"></i>
                         <p>Perfil</p>
                     </a>
                 </li>
+
+                {% endif %}
                 <li>
                     <a href="/ley-list">
                         <i class="pe-7s-note2"></i>
