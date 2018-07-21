@@ -24,4 +24,8 @@ urlpatterns = [
     url(r'^ley-list-post/$',
         views.LeyListPostView.as_view(),
         name='ley-list-post'),
+
+     url(r'^analisis-twiter/$',
+        views.AnalisisTwiterView.as_view(),
+        name='ley-list-post'),
 ]
