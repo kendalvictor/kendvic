@@ -2,165 +2,139 @@
 
 
 {% block content_search %}
-   <div class="card-header">
+    <div class="card-header">
         <h1>Modelo de Lenguaje Natural Redes Sociales</h1>
-        <form>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        {{ twiter_form.twiter }}
-                    </div>
+        <br>
+        <form class="form-inline" method="post">
+            {% csrf_token %}
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="form-group mx-sm-3 mb-2">
+                    {{ twiter_form.twiter }}
                 </div>
-                <div class="col-md-4"></div>
+                <button type="submit" class="btn btn-primary mb-2">Buscar</button>
             </div>
+            <div class="col-md-4"></div>
+            <div class="clearfix"></div>
         </form>
+
+
     </div>
 {% endblock content_search %}
 
 {% block content_body %}
+{#    {% if result %}#}
+        <div class="tab-content">
+            <div class="tab-pane active" id="home" role="tabpanel">
 
-    <div class="tab-content">
-        <div class="tab-pane active" id="home" role="tabpanel">
+                <div class="content">
+                    <section id="team" class="pb-5">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                    <div class="image-flip">
+                                        <div class="mainflip">
+                                            <div class="frontside">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <h4 class="card-title">Positivo 1 </h4>
+                                                        <a href="javascript:void(0)"
+                                                           class="btn btn-primary btn-sm">{{ positivo }}% </a>
 
-            <div class="content">
-                <section id="team" class="pb-5">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Positivo</h4>
-                                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">10% </a>
-
+                                                    </div>
+                                                    <br>
                                                 </div>
-                                                <br>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Neutro</h4>
-                                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">0%</a>
+                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                    <div class="image-flip">
+                                        <div class="mainflip">
+                                            <div class="frontside">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <h4 class="card-title">Neutro 0</h4>
+                                                        <a href="javascript:void(0)"
+                                                           class="btn btn-primary btn-sm">{{ neutro }}%</a>
 
+                                                    </div>
+                                                    <br>
                                                 </div>
-                                                <br>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Negativo</h4>
-                                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">15%</a>
+                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                    <div class="image-flip">
+                                        <div class="mainflip">
+                                            <div class="frontside">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <h4 class="card-title">Negativo -1 </h4>
+                                                        <a href="javascript:void(0)"
+                                                           class="btn btn-primary btn-sm">{{ negative }}%</a>
 
+                                                    </div>
+                                                    <br>
                                                 </div>
-                                                <br>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Total tweets Procesados</h4>
-                                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm">2000</a>
+                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                    <div class="image-flip">
+                                        <div class="mainflip">
+                                            <div class="frontside">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <h4 class="card-title">Total tweets Procesados</h4>
+                                                        <a href="javascript:void(0)"
+                                                           class="btn btn-primary btn-sm">{{ total }}</a>
 
+                                                    </div>
+                                                    <br>
                                                 </div>
-                                                <br>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
-                        </div>
-
-                        <div class="row">
-                            <div class="card-body table-full-width table-responsive">
+                            <div class="row">
+                                <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover table-striped">
                                         <thead>
-                                            <tr><th>ID</th>
-                                            <th></th>
-                                            <th>Salary</th>
-                                            <th>Country</th>
-                                            <th>City</th>
-                                        </tr></thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>tweet</th>
+                                            <th>sentimiento</th>
+                                        </tr>
+                                        </thead>
                                         <tbody>
+                                        {% for tweet in public_tweets %}
                                             <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>Oud-Turnhout</td>
+                                                <td><b>{{ forloop.counter }} .-</b></td>
+                                                <td>{{ tweet.0 }}</td>
+                                                <td>{{ tweet.1 }}</td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>Sinaai-Waas</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>$56,142</td>
-                                                <td>Netherlands</td>
-                                                <td>Baileux</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>$38,735</td>
-                                                <td>Korea, South</td>
-                                                <td>Overland Park</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>$63,542</td>
-                                                <td>Malawi</td>
-                                                <td>Feldkirchen in Kärnten</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>$78,615</td>
-                                                <td>Chile</td>
-                                                <td>Gloucester</td>
-                                            </tr>
+                                        {% endfor %}
+
                                         </tbody>
                                     </table>
                                 </div>
 
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
+
             </div>
-
         </div>
-    </div>
-
+{#    {% endif %}#}
 
 
 {% endblock content_body %}

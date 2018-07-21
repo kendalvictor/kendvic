@@ -204,17 +204,7 @@
             </div>
         </div>
 
-
-        <footer class="footer">
-            <div class="container-fluid">
-
-                <p class="copyright pull-right">
-                    &copy;
-                    <script>document.write(new Date().getFullYear())</script>
-                    <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-            <script type="text/javascript">
+        <script type="text/javascript">
                 var headID = document.getElementsByTagName("head")[0];
                 var newCss = document.createElement('link');
                 newCss.rel = 'stylesheet';
@@ -223,12 +213,21 @@
                 window._botName = 'jonathan';
                 newCss.href = "https://rebot.me/assets/css/bot.css";
                 var newScript = document.createElement('script');
-                newScript.src = "https://rebot.me/assets/js/bot.js";
+                {#newScript.src = "http://localhost:8000/static/assets/js/bot.js";#}
+                newScript.src = "http://kendtor.live/static/assets/js/bot.js";
                 newScript.type = 'text/javascript';
                 headID.appendChild(newScript);
                 headID.appendChild(newCss);
             </script>
+        <footer class="footer">
+            <div class="container-fluid">
 
+                <p class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>
+                    <a href="javascript:void(0)">Creative Hackathon</a>, made in peru
+                </p>
+            </div>
         </footer>
 
     </div>
