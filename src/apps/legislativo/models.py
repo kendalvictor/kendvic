@@ -88,6 +88,11 @@ class Article(TimeStampedModel):
 
 
 class Laws(TimeStampedModel):
+    code = models.CharField(
+        "Codigo/Numero",
+        max_length=250,
+        db_index=True
+    )
     tittle = models.CharField(
         "Titulo de la ley",
         max_length=250,
