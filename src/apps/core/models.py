@@ -1,10 +1,12 @@
 # coding=utf-8
 from django.utils import timezone
-
+from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, PermissionsMixin
 )
+
+from apps.ubigeo.models import UbigeoContinente, UbigeoDepartamento, UbigeoDistrito, UbigeoProvincia, UbigeoPais
 
 
 class TimeStampedModel(models.Model):
@@ -57,6 +59,15 @@ class UserManager(BaseUserManager):
 
 
 class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
+    # ITEMS GENDER
+    CODE_GENDER_MALE = 'M'
+    CODE_GENDER_FEMALE = 'F'
+    SIS_GENDER_MALE_STRING = (CODE_GENDER_MALE, _('Male'))
+    SIS_GENDER_FEMALE_STRING = (CODE_GENDER_FEMALE, _('Female'))
+    TYPE_GENDER_OPTIONS = (
+        SIS_GENDER_MALE_STRING, SIS_GENDER_FEMALE_STRING
+    )
+
     email = models.EmailField(
         verbose_name='Correo electrónico',
         max_length=255,
@@ -113,9 +124,30 @@ class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
         default=False
     )
 
+    gender = models.CharField(
+        max_length=2, choices=TYPE_GENDER_OPTIONS,
+        default='', null=True, blank=True)
+
+    continente = models.ForeignKey(
+        UbigeoContinente,  on_delete=models.SET_NULL, null=True,
+        related_name='%(app_label)s_%(class)s_continente')
+    pais = models.ForeignKey(
+        UbigeoPais,  on_delete=models.SET_NULL, null=True,
+        related_name='%(app_label)s_%(class)s_pais')
+    departamento = models.ForeignKey(
+        UbigeoDepartamento,   on_delete=models.SET_NULL, null=True,
+        related_name='%(app_label)s_%(class)s_departamento')
+    provincia = models.ForeignKey(
+        UbigeoProvincia,  on_delete=models.SET_NULL, null=True,
+        related_name='%(app_label)s_%(class)s_provincia')
+    distrito = models.ForeignKey(
+        UbigeoDistrito,  on_delete=models.SET_NULL, null=True,
+        related_name='%(app_label)s_%(class)s_distrito')
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+
     # REQUIRED_FIELDS = ['date_of_birth']
 
     class Meta:
@@ -138,5 +170,3 @@ class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.full_name
-
-

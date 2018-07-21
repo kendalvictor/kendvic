@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # LOCAL APPS
     'easy_thumbnails',
     'corsheaders',
+    'apps.ubigeo',
     'apps.legislativo',
     'apps.core',
     'apps.webapp',
@@ -174,14 +175,14 @@ LOGIN_REDIRECT_URL = '/portada/'
 
 print('--------> ', os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-RAVEN_CONFIG = {
-    'dsn': 'https://eb64b406a240415d9ddfe2c1e3df9985:09e8035ee5fe46bba77d5b5bcc1e6a5a@sentry.io/1231541',
-    # If you are using git, you can also automatically configure the
-    # release based on the git info.
-    'release': raven.fetch_git_sha(
-        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    ),
-}
+# RAVEN_CONFIG = {
+#     'dsn': 'https://eb64b406a240415d9ddfe2c1e3df9985:09e8035ee5fe46bba77d5b5bcc1e6a5a@sentry.io/1231541',
+#     # If you are using git, you can also automatically configure the
+#     # release based on the git info.
+#     'release': raven.fetch_git_sha(
+#         os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+#     ),
+# }
 
 
 #############

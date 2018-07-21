@@ -1,22 +1,27 @@
-import time
+from django.conf.urls import url
 
-from django.conf import settings
-from django.urls import path, re_path
-from django.views.generic import TemplateView
-
-
-STATIC_HASH = hash(time.time())
-
+from . import views
 
 urlpatterns = [
-    path(
-        r'portada/',
-        TemplateView.as_view(
-            template_name='index.html',
-            extra_context={
-                'STATIC_HASH': STATIC_HASH,
-                'SITE_URL': settings.SITE_URL
-            }
-        )
-    ),
+    url(r'^$',
+        views.HomeView.as_view(),
+        name='home'),
+    url(r'^register/$',
+            views.RegisterView.as_view(),
+            name='register'),
+    url(r'^login/$',
+            views.LoginView.as_view(),
+            name='admission'),
+
+    url(r'^profile/$',
+        views.ProfileView.as_view(),
+        name='profile'),
+
+    url(r'^ley-list/$',
+        views.LeyListView.as_view(),
+        name='ley-list'),
+
+    url(r'^ley-list-post/$',
+        views.LeyListPostView.as_view(),
+        name='ley-list-post'),
 ]
