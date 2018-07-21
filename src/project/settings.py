@@ -4,7 +4,6 @@ import raven
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -34,9 +33,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'raven.contrib.django.raven_compat',
+
     # LOCAL APPS
     'easy_thumbnails',
     'corsheaders',
+    'chatterbot.ext.django_chatterbot',
+    'watson',
     'apps.ubigeo',
     'apps.legislativo',
     'apps.core',
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -76,7 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -86,7 +88,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -106,7 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -120,7 +120,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -132,12 +131,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-
 
 ##################
 # REST_FRAMEWORK #
@@ -193,14 +190,12 @@ print('--------> ', os.path.dirname(os.path.dirname(os.path.dirname(os.path.absp
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LcWeVYUAAAAAKFIrmCdNHJXMRL6Mx9BkJDEuAgr'
 
-
 ##################
 # REDIMENSION    #
 ##################
 
 THUMBNAIL_D = {'size': (360, 180), 'crop': True}
 THUMBNAIL_C = {'size': (200, 200), 'crop': True}
-
 
 ##################
 # LOCAL SETTINGS #
@@ -214,6 +209,16 @@ try:
 except ImportError:
     pass
 
+# ChatterBot settings
+
+CHATTERBOT = {
+    'name': 'Django ChatterBot Example',
+    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'training_data': [
+        'chatterbot.corpus.english.greetings'
+    ],
+    'django_app_name': 'django_chatterbot'
+}
 
 ##################
 # DEBUG SETTINGS #
@@ -226,12 +231,12 @@ if DEBUG:
     except ImportError:
         pass
     else:
-        INSTALLED_APPS += ('debug_toolbar', )
-        MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
+        INSTALLED_APPS += ('debug_toolbar',)
+        MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
     try:
         import django_extensions
     except ImportError:
         pass
     else:
-        INSTALLED_APPS += ('django_extensions', )
+        INSTALLED_APPS += ('django_extensions',)

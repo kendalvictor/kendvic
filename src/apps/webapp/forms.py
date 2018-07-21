@@ -15,3 +15,12 @@ class LawHomeForm(forms.ModelForm):
                 'placeholder': 'Ingresa ley'
             })
         }
+
+
+class TwiterForm(forms.Form):
+    twiter = forms.CharField(required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['twiter'].widget.attrs.update(
+            {'class': 'form-control'})
