@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # LOCAL APPS
     'easy_thumbnails',
     'corsheaders',
+    'apps.legislativo',
     'apps.core',
     'apps.webapp',
     'solo',
