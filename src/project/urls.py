@@ -17,7 +17,7 @@ if settings.DEBUG:
 
 urlpatterns += [
     path(
-        'custom-kend/adm/',
+        'panel/admin/',
         admin.site.urls
     ),
     path(
