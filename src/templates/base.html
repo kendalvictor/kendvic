@@ -107,9 +107,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="notificationes.html">
+                    <a href="/analisis-twiter">
                         <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
+                        <p>redes Sociales</p>
                     </a>
                 </li>
                 <li>
@@ -203,9 +203,7 @@
                             {% endblock content_body %}
 
                         </div>
-                        {% endblock content_search %}
-                        {% block content_body %}
-                        {% endblock content_body %}
+
                     </div>
                 </div>
             </div>
@@ -220,8 +218,8 @@
                 window._botName = 'jonathan';
                 newCss.href = "https://rebot.me/assets/css/bot.css";
                 var newScript = document.createElement('script');
-                {#newScript.src = "http://localhost:8000/static/assets/js/bot.js";#}
-                newScript.src = "http://kendtor.live/static/assets/js/bot.js";
+                newScript.src = "http://localhost:8000/static/assets/js/bot.js";
+                {#newScript.src = "http://kendtor.live/static/assets/js/bot.js";#}
                 newScript.type = 'text/javascript';
                 headID.appendChild(newScript);
                 headID.appendChild(newCss);
@@ -339,7 +337,7 @@
         "ajax": '{% url 'laws' %}',
         "bProcessing": true,
         "ordering": true,
-        "pageLength": 50,g
+        "pageLength": 50,
         "language": language_datatable
     });
 

@@ -28,7 +28,7 @@ urlpatterns = [
 
     url(r'^analisis-twiter/$',
         views.AnalisisTwiterView.as_view(),
-        name='ley-list-post'),
+        name='analisis-twiter'),
 
     url(
         r'^law-autocomplete/$',
