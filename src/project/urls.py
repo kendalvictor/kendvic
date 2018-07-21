@@ -25,6 +25,10 @@ urlpatterns += [
         include('rest_framework.urls')
     ),
     path(
+        'legislativo/',
+        include('apps.legislativo.urls')
+    ),
+    path(
         '',
         include('apps.webapp.urls')
     ),

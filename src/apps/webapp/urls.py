@@ -1,5 +1,5 @@
 from django.conf.urls import url
-
+from apps.legislativo.views import LawsAutocomplete
 from . import views
 
 urlpatterns = [
@@ -24,4 +24,9 @@ urlpatterns = [
     url(r'^ley-list-post/$',
         views.LeyListPostView.as_view(),
         name='ley-list-post'),
+    url(
+        r'^law-autocomplete/$',
+        LawsAutocomplete.as_view(),
+        name='law-autocomplete',
+    ),
 ]

@@ -135,6 +135,12 @@ class Laws(TimeStampedModel):
         verbose_name='Titulo Legislativo',
         on_delete=models.SET_NULL,
     )
+    displeases = models.IntegerField(
+        default=0
+    )
+    like = models.IntegerField(
+        default=0
+    )
 
     def __str__(self):
         return self.tittle
@@ -142,3 +148,89 @@ class Laws(TimeStampedModel):
     class Meta:
         verbose_name = u"Ley"
         verbose_name_plural = u"Leyes"
+
+
+class Questions(TimeStampedModel):
+    user = models.ForeignKey(
+        User,
+        null=True,
+        blank=True,
+        db_index=True,
+        verbose_name='Usuario',
+        on_delete=models.SET_NULL,
+    )
+    text = models.TextField(
+        "Respuesta",
+    )
+    law = models.ForeignKey(
+        Laws,
+        null=True,
+        blank=True,
+        db_index=True,
+        verbose_name='Ley',
+        on_delete=models.SET_NULL,
+    )
+    approved = models.BooleanField(
+        default=False
+    )
+    displeases = models.IntegerField(
+        default=0
+    )
+    like = models.IntegerField(
+        default=0
+    )
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        verbose_name = u"Pregunta"
+        verbose_name_plural = u"Preguntas"
+
+
+class Answer(TimeStampedModel):
+    user = models.ForeignKey(
+        User,
+        null=True,
+        blank=True,
+        db_index=True,
+        verbose_name='Usuario',
+        on_delete=models.SET_NULL,
+    )
+    question = models.ForeignKey(
+        Questions,
+        null=True,
+        blank=True,
+        db_index=True,
+        verbose_name='Pregunta',
+        on_delete=models.SET_NULL,
+    )
+    text = models.CharField(
+        "Pregunta",
+        max_length=250,
+        db_index=True
+    )
+    law = models.ForeignKey(
+        Laws,
+        null=True,
+        blank=True,
+        db_index=True,
+        verbose_name='Ley',
+        on_delete=models.SET_NULL,
+    )
+    approved = models.BooleanField(
+        default=False
+    )
+    displeases = models.IntegerField(
+        default=0
+    )
+    like = models.IntegerField(
+        default=0
+    )
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        verbose_name = u"Respuesta"
+        verbose_name_plural = u"Respuestas"
