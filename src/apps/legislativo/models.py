@@ -227,6 +227,10 @@ class Answer(TimeStampedModel):
     approved = models.BooleanField(
         default=False
     )
+    counter = models.BooleanField(
+        'Contado',
+        default=False
+    )
     displeases = models.IntegerField(
         default=0
     )

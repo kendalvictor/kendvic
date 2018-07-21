@@ -15,9 +15,5 @@ register = template.Library()
 
 
 @register.simple_tag()
-def get_most_questioned():
-    questions = Laws.objects.all().order_by('-comments')
-
-    print('------------->', type(questions), questions)
-
-    return questions
+def get_most_answered():
+    return Laws.objects.all().order_by('-comments')[:3]

@@ -19,16 +19,40 @@ class QuestionsAdmin(admin.ModelAdmin):
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'text', 'user', 'law', 'approved', 'displeases',
+    list_display = ('id', 'approved', 'text', 'user', 'law', 'displeases',
                     'like')
     list_filter = (
         ('user', admin.RelatedOnlyFieldListFilter),
         ('law', admin.RelatedOnlyFieldListFilter),
         ('question', admin.RelatedOnlyFieldListFilter)
     )
+    list_editable = ('approved', )
     readonly_fields = ('id', 'text', 'user', 'law', 'approved', 'displeases',
-                       'like')
+                       'like', 'counter')
     search_fields = ('text', )
+
+    def save_model(self, request, obj, form, change):
+        """
+        Given a model instance save it to the database.
+        """
+        if obj.question and obj.question.law and not obj.law:
+            obj.law = obj.question.law
+
+        if not obj.counter and obj.approved:
+            if obj.question:
+                obj.question.comments += 1
+                obj.question.save()
+
+            if obj.law:
+                obj.law.comments += 1
+                obj.law.save()
+
+            if obj.user:
+                obj.user.comments += 1
+                obj.user.save()
+
+            obj.counter = True
+        obj.save()
 
 
 @admin.register(Status)
