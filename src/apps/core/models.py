@@ -123,6 +123,9 @@ class User(TimeStampedModel, AbstractBaseUser, PermissionsMixin):
         'staff status',
         default=False
     )
+    comments = models.IntegerField(
+        default=0
+    )
 
     gender = models.CharField(
         max_length=2, choices=TYPE_GENDER_OPTIONS,

@@ -1,10 +1,11 @@
 from django.shortcuts import render
-
+from .forms import LawHomeForm
 # Create your views here.
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
 
 
-class HomeView(TemplateView):
+class HomeView(FormView):
+    form_class = LawHomeForm
     template_name = 'index.html'
 
 
