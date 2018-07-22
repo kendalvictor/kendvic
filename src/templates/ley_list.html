@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-
-
+{% load static %}
 {% block content_search %}
     <div class="card-header">
         <br>
@@ -30,66 +29,74 @@
     <div class="card-body">
         <div class="content">
             {% for law in list_laws %}
-            <div class="row">
-                <div class="col-sm-10">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title bg-primary" style="height: 50px">
-                                {{ law.code }}</h3>
-                            <p class="card-text">
-                                {{ law.tittle|slice:":400"}}</p>
-                            <div class="clearfix"></div>
-                            <br>
-                            <div class="row justify-content-center">
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="card">
+                            <div class="card-block border border-dark">
+                                <h3 class="card-title bg-danger"
+                                    style="height: 50px;padding: 10px; background-color: darkseagreen;">
+                                    <b>{{ law.code }}</b></h3>
+                                <p class="card-text" style="padding: 10px">
+                                    {{ law.tittle|slice:":400"}}</p>
+                                <div class="clearfix"></div>
+                                <br>
+                                <div class="row justify-content-center" style="padding: 10px">
+                                    <div class="col-md-3 col-lg-3">
+                                        <button class="btn btn-default
                                     btn-block">vistos ( {{ law.views }} )
-                                    </button>
-                                </div>
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">Comentados
-                                        ( {{ law.comments }} )
-                                    </button>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 col-lg-3">
+                                        <button class="btn btn-default btn-block">Comentados
+                                            ( {{ law.comments }} )
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="card text-center">
-                        <div class="card-block">
-                            <h3 class="card-title"> puntuacion </h3>
-                            <p class="card-text">
-                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-down"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                            </div>
-                            <div class="clearfix">
-                            </div>
-                            <span class="text-center">
+                    <div class="col-sm-2">
+                        <div class="card text-center">
+                            <div class="card-block">
+                                <h3 class="card-title"
+                                    style="height: 50px;padding: 10px; background-color: darkseagreen;">
+                                    puntuacion </h3>
+                                <p class="card-text">
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+                                    <button type="button" class="btn btn-secondary">
+                                        <img src="{% static 'assets/img/me_gusta.png' %}" width="24px;">
+                                    </button>
+                                    <button type="button" class="btn btn-secondary">
+                                        <img src="{% static 'assets/img/no_me_gusta.png' %}" width="24px;">
+                                    </button>
+                                </div>
+                                <div class="clearfix">
+                                </div>
+                                <span class="text-center">
                                 {{ law.like }}  /  {{ law.displeases }}
                             </span>
-                            </p>
-                             <a href="{% url 'ley-list-post' %}?id={{ law.id }}"
-                                class="btn
+                                </p>
+                                <a href="{% url 'ley-list-post' %}?id={{ law.id }}"
+                                   class="btn
                              btn-primary">ver</a>
-                            <a href="#" class="btn btn-primary seguir"
-                            >Seguir</a>
-
+                                <a href="#" class="btn btn-primary seguir"
+                                >Seguir</a>
+                                <br/>
+                                 <br>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <hr/>
             {% endfor %}
 
-           <center><button type="button" class="btn btn-info  text-center">cargar mas</button></center>
+            <center>
+                <button type="button" class="btn btn-info  text-center">cargar mas</button>
+            </center>
 
             <br>
-             <br>
+            <br>
         </div>
 
 
