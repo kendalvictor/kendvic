@@ -23,7 +23,7 @@ class TwiterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['twiter'].widget.attrs.update(
-            {'class': 'form-control'})
+            {'class': 'form-control', 'style': 'width:400px;', 'placeholder':'Ingrese Hastag'})
 
 
 from django import forms

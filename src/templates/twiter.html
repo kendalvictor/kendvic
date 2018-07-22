@@ -7,134 +7,131 @@
         <br>
         <form class="form-inline" method="post">
             {% csrf_token %}
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <div class="form-group mx-sm-3 mb-2">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="form-group">
                     {{ twiter_form.twiter }}
                 </div>
                 <button type="submit" class="btn btn-primary mb-2">Buscar</button>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-2"></div>
             <div class="clearfix"></div>
         </form>
-
-
     </div>
 {% endblock content_search %}
 
 {% block content_body %}
-{#    {% if result %}#}
-        <div class="tab-content">
-            <div class="tab-pane active" id="home" role="tabpanel">
+    {#    {% if result %}#}
+    <div class="tab-content">
+        <div class="tab-pane active" id="home" role="tabpanel">
 
-                <div class="content">
-                    <section id="team" class="pb-5">
+            <div class="content">
+                <section id="team" class="pb-5">
+                    <div class="container">
+
+
                         <div class="container">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-3 col-md-3">
-                                    <div class="image-flip">
-                                        <div class="mainflip">
-                                            <div class="frontside">
-                                                <div class="card">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Positivo 1 </h4>
-                                                        <a href="javascript:void(0)"
-                                                           class="btn btn-primary btn-sm">{{ positivo }}% </a>
+                            <div class="row flex-items-xs-middle flex-items-xs-center text-center">
 
-                                                    </div>
-                                                    <br>
-                                                </div>
-                                            </div>
+                                <!-- Table #1  -->
+                                <div class="col-xs-12 col-lg-3 ">
+                                    <div class="card text-xs-center bg-info">
+                                        <div class="card-header bg-info">
+                                            <h3 class="display-2"><span class="currency"></span>{{ positivo|default:"0" }}<span class="period"></span>
+                                            </h3>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-3 col-md-3">
-                                    <div class="image-flip">
-                                        <div class="mainflip">
-                                            <div class="frontside">
-                                                <div class="card">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Neutro 0</h4>
-                                                        <a href="javascript:void(0)"
-                                                           class="btn btn-primary btn-sm">{{ neutro }}%</a>
-
-                                                    </div>
-                                                    <br>
-                                                </div>
-                                            </div>
+                                        <div class="card-block">
+                                            <h4 class="card-title">
+                                                <b>Positive</b>
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-3 col-md-3">
-                                    <div class="image-flip">
-                                        <div class="mainflip">
-                                            <div class="frontside">
-                                                <div class="card">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Negativo -1 </h4>
-                                                        <a href="javascript:void(0)"
-                                                           class="btn btn-primary btn-sm">{{ negative }}%</a>
+                                <!-- Table #1  -->
+                                <div class="col-xs-12 col-lg-3">
+                                    <div class="card text-xs-center bg-info">
+                                        <div class="card-header bg-info">
+                                            <h3 class="display-2"><span class="currency"></span>{{ negativo|default:"0" }}<span class="period"></span>
+                                            </h3>
+                                        </div>
+                                        <div class="card-block">
+                                            <h4 class="card-title">
+                                                <b>Negative</b>
+                                            </h4>
 
-                                                    </div>
-                                                    <br>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-3 col-md-3">
-                                    <div class="image-flip">
-                                        <div class="mainflip">
-                                            <div class="frontside">
-                                                <div class="card">
-                                                    <div class="card-body text-center">
-                                                        <h4 class="card-title">Total tweets Procesados</h4>
-                                                        <a href="javascript:void(0)"
-                                                           class="btn btn-primary btn-sm">{{ total }}</a>
+                                <!-- Table #1  -->
+                                <div class="col-xs-12 col-lg-3">
+                                    <div class="card text-xs-center bg-info">
+                                        <div class="card-header bg-info">
+                                            <h3 class="display-2"><span class="currency"></span>{{ neutrive|default:"0" }}<span class="period"></span>
+                                            </h3>
+                                        </div>
+                                        <div class="card-block">
+                                            <h4 class="card-title">
+                                                <b>Neutro</b>
+                                            </h4>
 
-                                                    </div>
-                                                    <br>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                            </div>
+                                 <div class="col-xs-12 col-lg-3">
+                                    <div class="card text-xs-center bg-info">
+                                        <div class="card-header bg-info">
+                                            <h3 class="display-2"><span class="currency"></span>{{ total|default:"0" }}<span class="period"></span>
+                                            </h3>
+                                        </div>
+                                        <div class="card-block">
+                                            <h4 class="card-title">
+                                                <b>Total</b>
+                                            </h4>
 
-                            <div class="row">
-                                <div class="card-body table-full-width table-responsive">
-                                    <table class="table table-hover table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>tweet</th>
-                                            <th>sentimiento</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for tweet in public_tweets %}
-                                            <tr>
-                                                <td><b>{{ forloop.counter }} .-</b></td>
-                                                <td>{{ tweet.0 }}</td>
-                                                <td>{{ tweet.1 }}</td>
-                                            </tr>
-                                        {% endfor %}
-
-                                        </tbody>
-                                    </table>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
                         </div>
-                    </section>
-                </div>
 
+                        <br>
+
+                        <div class="row">
+                            <div class="card-body table-full-width table-responsive">
+                                <table class="table table-hover table-striped">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>tweet</th>
+                                        <th>sentimiento</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for tweet in public_tweets %}
+                                        <tr>
+                                            <td><b>{{ forloop.counter }} .-</b></td>
+                                            <td>{{ tweet.0 }}</td>
+                                            <td>{{ tweet.1 }}</td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
             </div>
+
         </div>
-{#    {% endif %}#}
+    </div>
+    {#    {% endif %}#}
 
 
 {% endblock content_body %}
+

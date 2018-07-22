@@ -30,6 +30,10 @@ urlpatterns = [
         views.AnalisisTwiterView.as_view(),
         name='analisis-twiter'),
 
+    url(r'^reporte/$',
+        views.ReporteView.as_view(),
+        name='reporte'),
+
     url(
         r'^law-autocomplete/$',
         LawsAutocomplete.as_view(),

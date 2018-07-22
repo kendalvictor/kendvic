@@ -44,6 +44,10 @@ class LeyListPostView(TemplateView):
     template_name = 'ley_list_post.html'
 
 
+class ReporteView(TemplateView):
+    template_name = 'reporte.html'
+
+
 class AnalisisTwiterView(TemplateView):
     template_name = 'twiter.html'
 
@@ -68,59 +72,41 @@ class AnalisisTwiterView(TemplateView):
             api = tweepy.API(auth)
 
             query = twiter
-            public_tweets = api.search(query, count=200)
+            public_tweets = api.search(query, count=5)
 
             def clean_tweet(tweet):
                 tweet = ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
                 return tweet
 
-            f = open("hola.csv", 'wt')
+            def run(public_tweets):
+                positive2 = 0
+                negative2 = 0
+                neutro2 = 0
+                _public_tweets = list()
+                for tweet in public_tweets:
+                    cleaned_tweet = clean_tweet(tweet.text)
+                    from aylienapiclient import textapi
+                    client = textapi.Client("5c6fcdc1", "e40ab9593487f13430af2283d2f2e09c")
+                    sentiment = client.Sentiment({'text': '{0}'.format(cleaned_tweet)})
 
-            def run(f, public_tweets):
-                try:
-                    writer = csv.writer(f)
-                    writer.writerow(('Tweet', 'Sentiment'))
+                    if str(sentiment["polarity"]) == "positive":
+                        positive2 += 1
+                    elif str(sentiment["polarity"]) == "negative":
+                        negative2 += 1
+                    else:
+                        neutro2 += 1
+                    _public_tweets.append([cleaned_tweet, sentiment["polarity"]])
 
-                    positive = 0
-                    negative = 0
-                    neutro = 0
+                my_total = positive2 + negative2 + neutro2
+                rs = dict(positive=positive2, negative=negative2,
+                          neutrive=neutro2, public_tweets=_public_tweets,
+                          cantidad=my_total)
+                return rs
 
-                    _public_tweets = list()
-                    for tweet in public_tweets:
-                        cleaned_tweet = clean_tweet(tweet.text)
-                        _analysis = TextBlob(cleaned_tweet)
-
-                        _public_tweets.append([cleaned_tweet, _analysis.sentiment.polarity])
-
-                        print(_analysis.sentiment)
-
-                        if _analysis.sentiment.polarity > 0:
-                            sentiment = 'POSITIVE'
-                            positive += 1
-
-                        elif _analysis.sentiment.polarity == 0:
-                            sentiment = 'NEUTRAL'
-                            neutro += 1
-                        else:
-                            sentiment = 'NEGATIVE'
-                            negative += 1
-                        writer.writerow((cleaned_tweet, sentiment))
-
-                    p_positive = 100 * positive / len(public_tweets)
-                    p_negative = 100 * negative / len(public_tweets)
-                    p_neutro = 100 * neutro / len(public_tweets)
-
-                    return dict(positive=p_positive, negative=p_negative,
-                                neutro=p_neutro, public_tweets=_public_tweets,
-                                cantidad=len(public_tweets))
-                finally:
-                    f.close()
-
-            f = open("hola.csv", 'wt')
-            datos = run(f, public_tweets)
+            datos = run(public_tweets)
             self.positivo = datos["positive"]
             self.negativo = datos["negative"]
-            self.neutro = datos["neutro"]
+            self.neutrive = datos["neutrive"]
             self.total = datos["cantidad"]
             self.public_tweets = datos["public_tweets"]
             self.result = True
@@ -132,7 +118,7 @@ class AnalisisTwiterView(TemplateView):
         if self.result:
             context["positivo"] = self.positivo
             context["negativo"] = self.negativo
-            context["neutro"] = self.neutro
+            context["neutrive"] = self.neutrive
             context["public_tweets"] = self.public_tweets
             context["total"] = self.total
         return context
