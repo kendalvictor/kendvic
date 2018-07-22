@@ -10,7 +10,6 @@ class AnswerAdmin(admin.ModelAdmin):
                     'displeases', 'like')
     list_filter = (
         ('user', admin.RelatedOnlyFieldListFilter),
-        ('law', admin.RelatedOnlyFieldListFilter),
         ('question', admin.RelatedOnlyFieldListFilter)
     )
     list_editable = ('approved', )
