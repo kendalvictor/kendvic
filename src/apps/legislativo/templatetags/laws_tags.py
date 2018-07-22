@@ -17,3 +17,13 @@ register = template.Library()
 @register.simple_tag()
 def get_most_answered():
     return Laws.objects.all().order_by('-comments')[:3]
+
+
+@register.simple_tag()
+def get_most_like():
+    return Laws.objects.all().order_by('-like')[:3]
+
+
+@register.simple_tag()
+def get_last_answered():
+    return Laws.objects.all().order_by('-last_answer')[:3]
