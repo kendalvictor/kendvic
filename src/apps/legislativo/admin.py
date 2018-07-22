@@ -6,7 +6,7 @@ from .models import Status, Tittle, Chapter, Article, Laws, Questions, Answer, C
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'approved', 'text', 'user', 'law', 'question',
+    list_display = ('id', 'approved', 'text', 'user',  'question',
                     'displeases', 'like')
     list_filter = (
         ('user', admin.RelatedOnlyFieldListFilter),
@@ -21,17 +21,15 @@ class AnswerAdmin(admin.ModelAdmin):
         """
         Given a model instance save it to the database.
         """
-        if obj.question and obj.question.law and not obj.law:
-            obj.law = obj.question.law
 
         if not obj.counter and obj.approved:
             if obj.question:
                 obj.question.comments += 1
                 obj.question.save()
 
-            if obj.law:
-                obj.law.comments += 1
-                obj.law.save()
+            if obj.question and obj.question.law:
+                obj.question.law.comments += 1
+                obj.question.law.save()
 
             if obj.user:
                 obj.user.comments += 1
@@ -44,6 +42,7 @@ class AnswerAdmin(admin.ModelAdmin):
 class AnswerInline(admin.TabularInline):
     model = Answer
     extra = 0
+    readonly_fields = ('approved', 'counter')
 
 
 @admin.register(Questions)
@@ -56,7 +55,7 @@ class QuestionsAdmin(admin.ModelAdmin):
     )
     readonly_fields = ('id', )
     search_fields = ('text', )
-    inlines = (AnswerInline, )
+    inlines = [AnswerInline]
 
 
 @admin.register(Status)

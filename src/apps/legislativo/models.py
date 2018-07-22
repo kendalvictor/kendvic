@@ -259,17 +259,9 @@ class Answer(TimeStampedModel):
         on_delete=models.SET_NULL,
     )
     text = models.CharField(
-        "Pregunta",
+        "Texto de Respuesta",
         max_length=250,
         db_index=True
-    )
-    law = models.ForeignKey(
-        Laws,
-        null=True,
-        blank=True,
-        db_index=True,
-        verbose_name='Ley',
-        on_delete=models.SET_NULL,
     )
     approved = models.BooleanField(
         default=False
@@ -295,7 +287,7 @@ class Answer(TimeStampedModel):
 
 def answer_signal(sender, instance, created, **kwargs):
     if created and instance.question and instance.question.law:
-        id_law = instance.question.law
+        id_law = instance.question.law.id
         Laws.objects.filter(id=id_law).update(
             last_answer=datetime.now()
         )
