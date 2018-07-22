@@ -42,11 +42,13 @@
                             <br>
                             <div class="row justify-content-center">
                                 <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">vistos (1254)
+                                    <button class="btn btn-default
+                                    btn-block">vistos ( {{ law.views }} )
                                     </button>
                                 </div>
                                 <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">Comentados (15541)
+                                    <button class="btn btn-default btn-block">Comentados
+                                        ( {{ law.comments }} )
                                     </button>
                                 </div>
                             </div>
@@ -67,10 +69,13 @@
                                 </button>
                             </div>
                             <div class="clearfix"></div>
-                            <span class="text-center">252632</span>
+                            <span class="text-center"></span>
                             </p>
-                             <a href="/ley-list-post" class="btn btn-primary">ver</a>
-                            <a href="#" class="btn btn-primary">Seguir</a>
+                             <a href="{% url 'ley-list-post' %}?id={{ law.id }}"
+                                class="btn
+                             btn-primary">ver</a>
+                            <a href="#" class="btn btn-primary seguir"
+                            >Seguir</a>
 
                         </div>
                     </div>

@@ -112,7 +112,7 @@ class LawsAdmin(admin.ModelAdmin):
             'fields': ('comision', 'article', 'chapter', 'title_legis')
         }),
         ('Conteos', {
-            'fields': ('like', 'comments', 'views', 'title_legis', 'displeases')
+            'fields': ('like', 'comments', 'views', 'displeases')
         }),
     )
 
