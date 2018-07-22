@@ -60,13 +60,11 @@ class AnalisisTwiterView(TemplateView):
             api = tweepy.API(auth)
 
             query = twiter
-            public_tweets = api.search(query, count=50)
+            public_tweets = api.search(query, count=5)
 
             def clean_tweet(tweet):
                 tweet = ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet).split())
                 return tweet
-
-            f = open("hola.csv", 'wt')
 
             def run(public_tweets):
                 positive2 = 0
@@ -76,7 +74,7 @@ class AnalisisTwiterView(TemplateView):
                 for tweet in public_tweets:
                     cleaned_tweet = clean_tweet(tweet.text)
                     from aylienapiclient import textapi
-                    client = textapi.Client("54635bfd", "9a5a0b82c3623e87de008b0d816e841f")
+                    client = textapi.Client("5c6fcdc1", "e40ab9593487f13430af2283d2f2e09c")
                     sentiment = client.Sentiment({'text': '{0}'.format(cleaned_tweet)})
 
                     if str(sentiment["polarity"]) == "positive":
