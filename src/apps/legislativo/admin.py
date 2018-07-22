@@ -89,7 +89,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(Laws)
 class LawsAdmin(admin.ModelAdmin):
-    list_display = ('code', 'tittle', 'status', 'comision', 'published',
+    list_display = ('id', 'code', 'tittle', 'status', 'comision', 'published',
                     'url_spanish', 'url_quechua',
                     'article', 'chapter', 'title_legis')
     search_fields = ('tittle', 'code')
