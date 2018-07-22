@@ -210,7 +210,7 @@ class Questions(TimeStampedModel):
         on_delete=models.SET_NULL,
     )
     text = models.TextField(
-        "Respuesta",
+        "Contenido de Pregunta",
     )
     law = models.ForeignKey(
         Laws,
