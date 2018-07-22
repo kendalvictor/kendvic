@@ -171,12 +171,19 @@ class Laws(TimeStampedModel):
         on_delete=models.SET_NULL,
     )
     displeases = models.IntegerField(
+        'Cantidad NO ME GUSTA',
         default=0
     )
     like = models.IntegerField(
+        'Cantidad ME GUSTA',
         default=0
     )
     comments = models.IntegerField(
+        'Nro de Comentarios aprobados',
+        default=0
+    )
+    views = models.IntegerField(
+        'Vistas',
         default=0
     )
     last_answer = models.DateTimeField(
