@@ -20,7 +20,7 @@ def get_laws(request):
     try:
         data['data'] = [
             list(_) for _ in Laws.objects.all().order_by('-published').values_list(
-                'code', 'tittle', 'status__name', 'comision', 'published',
+                'code', 'tittle', 'status__name', 'comision__name', 'published',
                 'like', 'comments')
         ]
     except Exception as e:
