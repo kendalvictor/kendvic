@@ -29,14 +29,15 @@
 {% block content_body %}
     <div class="card-body">
         <div class="content">
-
+            {% for law in list_laws %}
             <div class="row">
                 <div class="col-sm-10">
                     <div class="card">
                         <div class="card-block">
-                            <h3 class="card-title bg-primary" style="height: 50px">Ley 25414</h3>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional
-                                content.</p>
+                            <h3 class="card-title bg-primary" style="height: 50px">
+                                {{ law.code }}</h3>
+                            <p class="card-text">
+                                {{ law.tittle|slice:":400"}}</p>
                             <div class="clearfix"></div>
                             <br>
                             <div class="row justify-content-center">
@@ -75,195 +76,7 @@
                     </div>
                 </div>
             </div>
-            <hr />
-
-             <div class="row">
-                <div class="col-sm-10">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title bg-primary" style="height: 50px">Ley 25414</h3>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <div class="clearfix"></div>
-                            <br>
-                            <div class="row justify-content-center">
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">vistos (1254)
-                                    </button>
-                                </div>
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">Comentados (15541)
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="card text-center">
-                        <div class="card-block">
-                            <h3 class="card-title"> puntuacion </h3>
-                            <p class="card-text">
-                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-down"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                            </div>
-                            <div class="clearfix"></div>
-                            <span class="text-center">252632</span>
-                            </p>
-                             <a href="/ley-list-post" class="btn btn-primary">ver</a>
-                            <a href="#" class="btn btn-primary">Seguir</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-
-            <div class="row">
-                <div class="col-sm-10">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title bg-primary" style="height: 50px">Ley 25414</h3>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <div class="clearfix"></div>
-                            <br>
-                            <div class="row justify-content-center">
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">vistos (1254)
-                                    </button>
-                                </div>
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">Comentados (15541)
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="card text-center">
-                        <div class="card-block">
-                            <h3 class="card-title"> puntuacion </h3>
-                            <p class="card-text">
-                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-down"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                            </div>
-                            <div class="clearfix"></div>
-                            <span class="text-center">252632</span>
-                            </p>
-                             <a href="/ley-list-post" class="btn btn-primary">ver</a>
-                            <a href="#" class="btn btn-primary">Seguir</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-
-           <div class="row">
-                <div class="col-sm-10">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title bg-primary" style="height: 50px">Ley 25414</h3>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <div class="clearfix"></div>
-                            <br>
-                            <div class="row justify-content-center">
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">vistos (1254)
-                                    </button>
-                                </div>
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">Comentados (15541)
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="card text-center">
-                        <div class="card-block">
-                            <h3 class="card-title"> puntuacion </h3>
-                            <p class="card-text">
-                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-down"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                            </div>
-                            <div class="clearfix"></div>
-                            <span class="text-center">252632</span>
-                            </p>
-                             <a href="/ley-list-post" class="btn btn-primary">ver</a>
-                            <a href="#" class="btn btn-primary">Seguir</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
-
-           <div class="row">
-                <div class="col-sm-10">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title bg-primary" style="height: 50px">Ley 25414</h3>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <div class="clearfix"></div>
-                            <br>
-                            <div class="row justify-content-center">
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">vistos (1254)
-                                    </button>
-                                </div>
-                                <div class="col-md-3 col-lg-3">
-                                    <button class="btn btn-default btn-block">Comentados (15541)
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="card text-center">
-                        <div class="card-block">
-                            <h3 class="card-title"> puntuacion </h3>
-                            <p class="card-text">
-                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-up"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                                <button type="button" class="btn btn-secondary"><i class="far fa-thumbs-down"
-                                                                                   style="font-size: 24px;"></i>
-                                </button>
-                            </div>
-                            <div class="clearfix"></div>
-                            <span class="text-center">252632</span>
-                            </p>
-                             <a href="/ley-list-post" class="btn btn-primary">ver</a>
-                            <a href="#" class="btn btn-primary">Seguir</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr />
+            {% endfor %}
 
            <center><button type="button" class="btn btn-info  text-center">cargar mas</button></center>
 

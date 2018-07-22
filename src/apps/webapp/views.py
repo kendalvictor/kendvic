@@ -7,6 +7,7 @@ from django.views.generic import RedirectView
 from django.views.generic import TemplateView, FormView
 from textblob import TextBlob
 
+from apps.legislativo.models import Laws
 from . import forms
 from .forms import LawHomeForm, TwiterForm
 
@@ -26,6 +27,17 @@ class ProfileView(TemplateView):
 
 class LeyListView(TemplateView):
     template_name = 'ley_list.html'
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        order = request.GET.get('order', '')
+        laws = Laws.objects.all()
+        try:
+            context['list_laws'] = laws.order_by('-' + order)[:10]
+        except:
+            context['list_laws'] = laws.order_by('-published')[:10]
+
+        return self.render_to_response(context)
 
 
 class LeyListPostView(TemplateView):
