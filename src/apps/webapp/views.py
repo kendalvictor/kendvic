@@ -92,7 +92,6 @@ class AnalisisTwiterView(TemplateView):
                 rs = dict(positive=positive2, negative=negative2,
                           neutrive=neutro2, public_tweets=_public_tweets,
                           cantidad=my_total)
-                print(rs)
                 return rs
 
             datos = run(public_tweets)
