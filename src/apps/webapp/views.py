@@ -43,6 +43,17 @@ class LeyListView(TemplateView):
 class LeyListPostView(TemplateView):
     template_name = 'ley_list_post.html'
 
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        id = request.GET.get('id', 0) or 0
+        print("----------> ", id)
+        try:
+            context['law'] = Laws.objects.get(id=id)
+            print("NO volo")
+        except:
+            context['law'] = None
+        return self.render_to_response(context)
+
 
 class ReporteView(TemplateView):
     template_name = 'reporte.html'
