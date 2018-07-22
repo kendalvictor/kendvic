@@ -179,7 +179,7 @@
                             <div id="leyes">
                                 <center><h5 style="color:slateblue"
                                             class="v-link">BUSQUEDA
-                                    PERSONALIZADA</h5></center>
+                                    DINAMICA</h5></center>
                                 <table class="datatable" id="datatable_ley">
                                     <thead>
                                     <tr>
@@ -358,11 +358,18 @@
           "bJQueryUI": true,
           "bScrollAutoCss": true,
           "bProcessing": true,
-          "ordering": true,
+          "ordering": false,
         "language": language_datatable,
         "scrollX": true,
         "sScrollX": "100%",
-        "bScrollCollapse": true
+        "bScrollCollapse": true,
+        "createdRow" : function( row, data, index) {
+            console.log(index, typeof(index), index % 2);
+            if (index % 2){
+                $(row).css("background-color", '#FE2E2E');
+                $(row).css("color", 'white');
+            }
+        }
     });
 
     table_ley.columns().every(function () {
