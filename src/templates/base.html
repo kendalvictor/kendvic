@@ -346,10 +346,20 @@
 
     var table_ley = $("#datatable_ley").DataTable({
         "ajax": '{% url 'laws' %}',
-        "bProcessing": true,
-        "ordering": true,
+        "responsive": true,
         "pageLength": 50,
-        "language": language_datatable
+        "iCookieDuration": 60,
+          "iDisplayLength": -1,
+          "bStateSave": false,
+          "bAutoWidth": false,
+          "bRetrieve": true,
+          "bJQueryUI": true,
+          "bScrollAutoCss": true,
+          "bProcessing": true,
+          "bPaginate": false,
+          "ordering": true,
+        "language": language_datatable,
+        "scrollX": true
     });
 
     table_ley.columns().every(function () {

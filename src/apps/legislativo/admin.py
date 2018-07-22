@@ -104,10 +104,10 @@ class LawsAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ['tittle', 'url_spanish', 'url_quechua', 'status']
+            'fields': ['code', 'tittle', 'url_spanish', 'url_quechua', 'status']
         }),
         ('Relaciones', {
-            'fields': ('article', 'chapter', 'title_legis')
+            'fields': ('comision', 'article', 'chapter', 'title_legis')
         }),
     )
 
