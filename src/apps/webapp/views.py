@@ -1,15 +1,14 @@
-from .forms import LawHomeForm, TwiterForm
-from django.views.generic import TemplateView
-from django.contrib.auth import authenticate, login, logout
-from django.views.generic import FormView, RedirectView
-
-from . import forms
-
 import csv
 import re
 
 import tweepy
+from django.contrib.auth import authenticate, login, logout
+from django.views.generic import RedirectView
+from django.views.generic import TemplateView, FormView
 from textblob import TextBlob
+
+from . import forms
+from .forms import LawHomeForm, TwiterForm
 
 
 class HomeView(FormView):

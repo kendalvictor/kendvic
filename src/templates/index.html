@@ -10,7 +10,8 @@
     <div class="content">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Las mas Comentadas</a>
+                <a class="nav-link active" href="#"><h5>LAS MAS
+                    COMENTADAS</h5></a>
             </li>
 
         </ul>
@@ -23,15 +24,16 @@
                 <section id="team" class="pb-5">
                     <div class="container">
                         <div class="row">
+                            {% for ley in most_answered %}
                             <div class="col-xs-12 col-sm-3 col-md-3">
                                 <div class="image-flip">
                                     <div class="mainflip">
                                         <div class="frontside">
                                             <div class="card">
                                                 <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
+                                                    <h4
+                                                            class="card-title">{{ ley.code  }}</h4>
+                                                    <p class="card-text">{{ ley.tittle|slice:":200"  }}</p>
                                                     <a href="#" class="btn btn-primary btn-sm">Leer</a>
 
                                                 </div>
@@ -41,61 +43,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Leer</a>
-
-                                                </div>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Leer</a>
-
-                                                </div>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Leer</a>
-                                                </div>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">continuar leyendo</button>
+                            {% endfor %}
                         </div>
                     </div>
                 </section>
@@ -107,11 +55,13 @@
     <div class="content">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Las mas valoradas</a>
+                <a class="nav-link active" href="#"><h5>LAS MAS
+                    VALORADAS</h5></a>
             </li>
 
         </ul>
     </div>
+    {% get_most_like  as most_like %}
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel">
 
@@ -119,15 +69,16 @@
                 <section id="team" class="pb-5">
                     <div class="container">
                         <div class="row">
+                            {% for ley in most_like %}
                             <div class="col-xs-12 col-sm-3 col-md-3">
                                 <div class="image-flip">
                                     <div class="mainflip">
                                         <div class="frontside">
                                             <div class="card">
                                                 <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
+                                                    <h4
+                                                            class="card-title">{{ ley.code }}</h4>
+                                                    <p class="card-text">{{ ley.tittle|slice:":200"  }}</p>
                                                     <a href="#" class="btn btn-primary btn-sm">Leer</a>
 
                                                 </div>
@@ -137,61 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Leer</a>
-
-                                                </div>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Leer</a>
-
-                                                </div>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Leer</a>
-                                                </div>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">continuar leyendo</button>
+                            {% endfor %}
                         </div>
                     </div>
                 </section>
@@ -204,28 +101,29 @@
     <div class="content">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Ultimas Leyes
-                    respondidas</a>
+                <a class="nav-link active" href="#"><h5>ULTIMAS LEYES
+                    RESPONDIDAS</h5></a>
             </li>
-
         </ul>
     </div>
+    {% get_last_answered  as last_answered %}
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel">
-
             <div class="content">
                 <section id="team" class="pb-5">
                     <div class="container">
                         <div class="row">
+                            {% for ley in last_answered %}
                             <div class="col-xs-12 col-sm-3 col-md-3">
                                 <div class="image-flip">
                                     <div class="mainflip">
                                         <div class="frontside">
                                             <div class="card">
                                                 <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
+                                                    <h4
+                                                            class="card-title">{{ ley.code }}</h4>
+                                                    <p class="card-text">
+                                                        {{ ley.tittle|slice:":200" }}</p>
                                                     <a href="#" class="btn btn-primary btn-sm">Leer</a>
 
                                                 </div>
@@ -235,61 +133,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Leer</a>
-
-                                                </div>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Leer</a>
-
-                                                </div>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-3 col-md-3">
-                                <div class="image-flip">
-                                    <div class="mainflip">
-                                        <div class="frontside">
-                                            <div class="card">
-                                                <div class="card-body text-center">
-                                                    <h4 class="card-title">Ley ·1254</h4>
-                                                    <p class="card-text">This is basic card with image on top, title,
-                                                        description and button.</p>
-                                                    <a href="#" class="btn btn-primary btn-sm">Leer</a>
-                                                </div>
-                                                <br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">continuar leyendo</button>
+                            {% endfor %}
                         </div>
                     </div>
                 </section>

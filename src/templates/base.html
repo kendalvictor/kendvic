@@ -179,22 +179,23 @@
                             <div id="leyes">
                                 <center><h5 style="color:slateblue"
                                             class="v-link">BUSQUEDA
-                                    PERSONALIZADA</h5></center>
+                                    DINAMICA</h5></center>
                                 <table class="datatable" id="datatable_ley">
                                     <thead>
                                     <tr>
-                                        <th width="15%">Codigo / Numero</th>
-                                        <th width="15%">Ley</th>
-                                        <th width="15%">Estado</th>
-                                        <th width="15%">Comision</th>
-                                        <th width="15%">Fecha pub.</th>
-                                        <th width="10%">Me gusta</th>
-                                        <th width="15%">Comentarios</th>
+                                        <th width="5%">Numero</th>
+                                        <th width="50%">Ley</th>
+                                        <th width="10%">Estado</th>
+                                        <th width="10%">Comision</th>
+                                        <th width="5%">Fecha pub.</th>
+                                        <th width="5%">Me gusta</th>
+                                        <th width="5%">Comentarios</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th><input type="text" name="tittle"></th>
+                                        <th><input size="10" type="text"
+                                                   name="tittle"></th>
                                         <th><input type="text" name="tittle"></th>
                                         <th><input type="text" name="tittle"></th>
                                         <th><input type="text" name="tittle"></th>
@@ -346,10 +347,29 @@
 
     var table_ley = $("#datatable_ley").DataTable({
         "ajax": '{% url 'laws' %}',
-        "bProcessing": true,
-        "ordering": true,
+        "responsive": true,
+            'fixedHeader': true,
         "pageLength": 50,
-        "language": language_datatable
+        "iCookieDuration": 60,
+          "iDisplayLength": -1,
+          "bStateSave": false,
+          "bAutoWidth": true,
+          "bRetrieve": true,
+          "bJQueryUI": true,
+          "bScrollAutoCss": true,
+          "bProcessing": true,
+          "ordering": false,
+        "language": language_datatable,
+        "scrollX": true,
+        "sScrollX": "100%",
+        "bScrollCollapse": true,
+        "createdRow" : function( row, data, index) {
+            console.log(index, typeof(index), index % 2);
+            if (index % 2){
+                $(row).css("background-color", '#FE2E2E');
+                $(row).css("color", 'white');
+            }
+        }
     });
 
     table_ley.columns().every(function () {

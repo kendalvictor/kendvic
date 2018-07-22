@@ -1,10 +1,12 @@
 import uuid
 from urllib.parse import urljoin
+from datetime import datetime
 
 from django.db import models
 from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
 from easy_thumbnails.files import get_thumbnailer
+from django.db.models.signals import pre_delete, post_save
 
 
 from ..core.models import TimeStampedModel, User
@@ -177,6 +179,11 @@ class Laws(TimeStampedModel):
     comments = models.IntegerField(
         default=0
     )
+    last_answer = models.DateTimeField(
+        'Ultima respuesta',
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
         return self.tittle
@@ -277,3 +284,13 @@ class Answer(TimeStampedModel):
     class Meta:
         verbose_name = u"Respuesta"
         verbose_name_plural = u"Respuestas"
+
+
+def answer_signal(sender, instance, created, **kwargs):
+    if created and instance.question and instance.question.law:
+        id_law = instance.question.law
+        Laws.objects.filter(id=id_law).update(
+            last_answer=datetime.now()
+        )
+
+post_save.connect(answer_signal, sender=Answer)
