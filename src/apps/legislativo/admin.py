@@ -44,7 +44,6 @@ class AnswerAdmin(admin.ModelAdmin):
 class AnswerInline(admin.TabularInline):
     model = Answer
     extra = 0
-    readonly_fields = ('text', 'approved', 'user', 'law', 'displeases', 'like')
 
 
 @admin.register(Questions)
