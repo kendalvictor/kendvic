@@ -12,8 +12,7 @@ class QuestionsAdmin(admin.ModelAdmin):
         ('user', admin.RelatedOnlyFieldListFilter),
         ('law', admin.RelatedOnlyFieldListFilter)
     )
-    readonly_fields = ('id', 'text', 'user', 'law', 'approved', 'displeases',
-                       'comments')
+    readonly_fields = ('id', )
     search_fields = ('text', )
 
 
@@ -27,8 +26,7 @@ class AnswerAdmin(admin.ModelAdmin):
         ('question', admin.RelatedOnlyFieldListFilter)
     )
     list_editable = ('approved', )
-    readonly_fields = ('id', 'text', 'user', 'law', 'displeases', 'like',
-                       'counter')
+    readonly_fields = ('id',  'counter')
     search_fields = ('text', )
 
     def save_model(self, request, obj, form, change):

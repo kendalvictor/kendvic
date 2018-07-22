@@ -96,7 +96,8 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-info btn-fill text-center">Comentar Ley</button>
+                        <button type="submit" class="btn btn-info btn-fill
+                        text-center"> DEJANOS TU PREGUNTA</button>
                     </div>
 
 
@@ -105,35 +106,19 @@
             </div>
 
 
-            <h3>Comentarios</h3>
+            <h3>PREGUNTAS ABIERTAS</h3>
 
-
-
+            {% for question in law.questions_set.all %}
             <div class="alert alert-info alert-with-icon" data-notify="container">
                 <span data-notify="icon" class="nc-chart"></span>
-                <span data-notify="message" style="color:black">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
+                <span data-notify="message" style="color:black">
+                    {{ question.text }}
+                </span>
             </div>
-           <div class="alert alert-info alert-with-icon" data-notify="container">
-                <span data-notify="icon" class="nc-chart"></span>
-                <span data-notify="message" style="color:black">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
-            </div>
-            <div class="alert alert-info alert-with-icon" data-notify="container">
-                <span data-notify="icon" class="nc-chart"></span>
-                <span data-notify="message" style="color:black">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
-            </div>
-            <div class="alert alert-info alert-with-icon" data-notify="container">
-                <span data-notify="icon" class="nc-chart"></span>
-                <span data-notify="message" style="color:black">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
-            </div>
-            <div class="alert alert-info alert-with-icon" data-notify="container">
-                <span data-notify="icon" class="nc-chart"></span>
-                <span data-notify="message" style="color:black">This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.</span>
-            </div>
+           {% endfor %}
 
             <center><button type="submit" class="btn btn-info btn-fill text-center">Mostrar mas</button></center>
         </div>
-
-
 
     </div>
 {% endblock content_body %}
