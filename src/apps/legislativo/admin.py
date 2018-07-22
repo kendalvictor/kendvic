@@ -93,7 +93,7 @@ class LawsAdmin(admin.ModelAdmin):
                     'url_spanish', 'url_quechua',
                     'article', 'chapter', 'title_legis')
     search_fields = ('tittle', 'code')
-    list_editable = ('published', 'tittle', 'status', 'comision')
+    list_editable = ('published', 'tittle', 'status', 'comision', 'code')
     list_filter = (
         ('article', admin.RelatedOnlyFieldListFilter),
         ('chapter', admin.RelatedOnlyFieldListFilter),
