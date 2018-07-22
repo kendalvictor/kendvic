@@ -4,22 +4,10 @@ from import_export.admin import ExportMixin
 from .models import Status, Tittle, Chapter, Article, Laws, Questions, Answer, Comision
 
 
-@admin.register(Questions)
-class QuestionsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'text', 'user', 'law', 'approved', 'displeases',
-                    'comments')
-    list_filter = (
-        ('user', admin.RelatedOnlyFieldListFilter),
-        ('law', admin.RelatedOnlyFieldListFilter)
-    )
-    readonly_fields = ('id', )
-    search_fields = ('text', )
-
-
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'approved', 'text', 'user', 'law', 'displeases',
-                    'like')
+    list_display = ('id', 'approved', 'text', 'user', 'law', 'question',
+                    'displeases', 'like')
     list_filter = (
         ('user', admin.RelatedOnlyFieldListFilter),
         ('law', admin.RelatedOnlyFieldListFilter),
@@ -51,6 +39,25 @@ class AnswerAdmin(admin.ModelAdmin):
 
             obj.counter = True
         obj.save()
+
+
+class AnswerInline(admin.TabularInline):
+    model = Answer
+    extra = 0
+    readonly_fields = ('text', 'approved', 'user', 'law', 'displeases', 'like')
+
+
+@admin.register(Questions)
+class QuestionsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'text', 'user', 'law', 'approved', 'displeases',
+                    'comments')
+    list_filter = (
+        ('user', admin.RelatedOnlyFieldListFilter),
+        ('law', admin.RelatedOnlyFieldListFilter)
+    )
+    readonly_fields = ('id', )
+    search_fields = ('text', )
+    inlines = (AnswerInline, )
 
 
 @admin.register(Status)

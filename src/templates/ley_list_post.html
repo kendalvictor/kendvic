@@ -96,16 +96,10 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-info btn-fill
-                        text-center"> DEJANOS TU PREGUNTA</button>
+                        <button class="btn btn-info btn-fill text-center" id="create_question"> DEJANOS TU PREGUNTA</button>
                     </div>
-
-
                 </div>
-
             </div>
-
-
             <h3>PREGUNTAS ABIERTAS</h3>
 
             {% for question in law.questions_set.all %}
@@ -137,3 +131,29 @@
         margin: 20px auto 1px;
     }
 </style>
+{% block javascript %}
+
+<script>
+      $(document).ready(function($) {
+        $("#create_question").on('click', function(e) {
+            e.preventDefault();
+            console.log("ENTROOOOOOOOOOOOOOO")
+            swal({
+              title: "An input!",
+              text: "Write something interesting:",
+              type: "input",
+              showCancelButton: true,
+              closeOnConfirm: false,
+              inputPlaceholder: "Write something"
+            }, function (inputValue) {
+              if (inputValue === false) return false;
+              if (inputValue === "") {
+                swal.showInputError("You need to write something!");
+                return false
+              }
+              swal("Nice!", "You wrote: " + inputValue, "success");
+            });
+        });
+      });
+</script>
+{% endblock javascript %}
