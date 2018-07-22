@@ -68,8 +68,11 @@
                                                                                    style="font-size: 24px;"></i>
                                 </button>
                             </div>
-                            <div class="clearfix"></div>
-                            <span class="text-center"></span>
+                            <div class="clearfix">
+                            </div>
+                            <span class="text-center">
+                                {{ law.like }}  /  {{ law.displeases }}
+                            </span>
                             </p>
                              <a href="{% url 'ley-list-post' %}?id={{ law.id }}"
                                 class="btn
