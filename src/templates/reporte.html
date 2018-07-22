@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+
+{% block content_search %}
+    <div class="card-header">
+        <br>
+        <div class="row">
+            <center><h1>Estadistica</h1></center>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                 <div class="col-md-12">
+                    <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Departamento</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Distrito</span>
+                            </label>
+                        </div>
+                    </div>
+                     <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">zona rural</span>
+                            </label>
+                        </div>
+                    </div>
+
+                 </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+    </div>
+{% endblock content_search %}
+
+{% block content_body %}
+    <div class="card-body">
+        <div class="content">
+
+            <div class="row">
+               <canvas id="bar-chart" width="800" height="300"></canvas>
+            </div>
+             <div class="row">
+               <canvas id="pie-chart" width="800" height="300"></canvas>
+            </div>
+
+             <div class="row">
+               <canvas id="bar-chart-grouped" width="800" height="300"></canvas>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock content_body %}
+
+{% block javascript %}
+
+
+<script type="text/javascript">
+    new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
+    data: {
+      labels: ["lima", "tacna", " lambayqye", "Piura", "Puno"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [2478,5267,734,784,433]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Predicted world population '
+      }
+    }
+});
+
+    new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Amazonas", "Ancash", "Apurímac", "Ayacucho America", "Cajamrca", "Cusco"],
+      datasets: [{
+        label: "Population (millions)",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [2478,5267,734,784,433]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Predicted world population (millions) in 2050'
+      }
+    }
+});
+
+
+    new Chart(document.getElementById("bar-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels: ["costa", "sierra", "selva"],
+      datasets: [
+        {
+          label: "costa",
+          backgroundColor: "#3e95cd",
+          data: [133,221,783,2478]
+        }, {
+          label: "sierra",
+          backgroundColor: "#8e5ea2",
+          data: [408,547,675,734]
+        },
+          {
+          label: "selva",
+          backgroundColor: "#8eff2",
+          data: [408,547,675,734]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Population growth (millions)'
+      }
+    }
+});
+</script>
+
+
+{% endblock javascript %}

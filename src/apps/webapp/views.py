@@ -33,6 +33,13 @@ class LeyListPostView(TemplateView):
     template_name = 'ley_list_post.html'
 
 
+class ReporteView(TemplateView):
+    template_name = 'reporte.html'
+
+
+
+
+
 class AnalisisTwiterView(TemplateView):
     template_name = 'twiter.html'
 
