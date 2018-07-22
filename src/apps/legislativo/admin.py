@@ -90,10 +90,12 @@ class ArticleAdmin(admin.ModelAdmin):
 @admin.register(Laws)
 class LawsAdmin(admin.ModelAdmin):
     list_display = ('id', 'code', 'tittle', 'status', 'comision', 'published',
-                    'url_spanish', 'url_quechua',
-                    'article', 'chapter', 'title_legis')
+                    'url_spanish', 'url_quechua', 'article', 'chapter',
+                    'title_legis', 'like', 'comments', 'views',
+                    'displeases')
     search_fields = ('tittle', 'code')
-    list_editable = ('published', 'tittle', 'status', 'comision', 'code')
+    list_editable = ('published', 'tittle', 'status', 'comision', 'code',
+                     'like', 'comments', 'views', 'displeases')
     list_filter = (
         ('article', admin.RelatedOnlyFieldListFilter),
         ('chapter', admin.RelatedOnlyFieldListFilter),
@@ -108,6 +110,9 @@ class LawsAdmin(admin.ModelAdmin):
         }),
         ('Relaciones', {
             'fields': ('comision', 'article', 'chapter', 'title_legis')
+        }),
+        ('Conteos', {
+            'fields': ('like', 'comments', 'views', 'title_legis', 'displeases')
         }),
     )
 
