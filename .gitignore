@@ -262,3 +262,6 @@ venv.bak/
 
 # SETTINGS LOCAL
 local_settings.py
+**/requirements.txt
+requirements.txt
+**/requirements/*.txt
